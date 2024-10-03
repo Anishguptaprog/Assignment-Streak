@@ -1,0 +1,28 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(20, 30px);
+  grid-template-rows: repeat(20, 30px);
+  gap: 2px;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: lightgray;
+  border: 1px solid black;
+}
+
+.start {
+  background-color: green;
+}
+
+.end {
+  background-color: red;
+}
+
+.path {
+  background-color: blue;  /* Highlight the DFS path */
+}
+.obstacle {
+  background-color: black;  /* Color for obstacles */
+}
