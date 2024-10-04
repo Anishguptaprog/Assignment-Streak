@@ -1,14 +1,12 @@
-/* Center the grid and give it a better look */
 .grid-container {
   display: flex;
-  justify-content: center;   /* Center horizontally */
-  align-items: center;       /* Center vertically */
-  min-height: 100vh;         /* Full screen height */
-  flex-direction: column;    /* Stack heading, buttons, and grid */
-  background-color: #f4f4f4; /* Light background for the entire app */
+  justify-content: center;  
+  align-items: center;      
+  min-height: 100vh;        
+  flex-direction: column;    
+  background-color: #f4f4f4; 
 }
 
-/* Add some margin for spacing */
 .heading {
   font-size: 2rem;
   font-weight: bold;
@@ -20,39 +18,37 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(20, 30px); /* 20 columns */
-  grid-template-rows: repeat(20, 30px);    /* 20 rows */
-  gap: 2px;                               /* Space between cells */
-  margin-bottom: 20px;                    /* Space between grid and buttons */
+  grid-template-columns: repeat(20, 30px); 
+  grid-template-rows: repeat(20, 30px);    
+  gap: 2px;                               
+  margin-bottom: 20px;                    
 }
 
-/* Cell Styles */
 .cell {
   width: 30px;
   height: 30px;
   background-color: lightgray;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   transition: background-color 0.3s ease;
 }
 
-/* Colors for different cell types */
+
 .start {
-  background-color: #28a745; /* Green for start point */
+  background-color: #28a745; 
 }
 
 .end {
-  background-color: #dc3545; /* Red for end point */
+  background-color: #dc3545; 
 }
 
 .path {
-  background-color: #007bff; /* Blue for the DFS path */
+  background-color: #007bff; 
 }
 
 .obstacle {
-  background-color: #343a40; /* Dark gray for obstacles */
+  background-color: black; 
 }
 
-/* Button styles */
 button {
   padding: 10px 20px;
   font-size: 1rem;
@@ -63,16 +59,6 @@ button {
   transition: background-color 0.3s ease;
   margin: 5px;
   font-family: 'Arial', sans-serif;
-}
-
-/* Different button colors */
-button:nth-child(1) {
-  background-color: #007bff;
-  color: white;
-}
-
-button:nth-child(1):hover {
-  background-color: #0056b3;
 }
 
 button:nth-child(2) {
@@ -86,7 +72,7 @@ button:nth-child(2):hover {
 
 button:nth-child(3) {
   background-color: #dc3545;
-  color: white;
+  
 }
 
 button:nth-child(3):hover {
