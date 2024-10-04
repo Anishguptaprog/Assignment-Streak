@@ -37,8 +37,6 @@ func main() {
 			return
 		}
 
-		// log.Printf("Received grid: %v", req.Grid)
-
 		path := findDFSPath(req.Start, req.End, req.Grid)
 		c.JSON(http.StatusOK, gin.H{"path": path})
 	})
@@ -46,7 +44,7 @@ func main() {
 }
 
 func findDFSPath(start, end Point, grid [][]string) []Point {
-	// log.Printf("Received grid: %v", req.Grid)
+
 	path := []Point{}
 	visited := make(map[Point]bool)
 

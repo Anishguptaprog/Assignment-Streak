@@ -109,7 +109,7 @@ const App = () => {
 
   return (
     <div className="grid-container">
-      <h1 className="heading">DFS Traversal</h1>
+      <h1 className="heading">StreakAI Assignment</h1>
       <div>
         <div className="grid">
           {grid.map((row, rowIndex) =>
