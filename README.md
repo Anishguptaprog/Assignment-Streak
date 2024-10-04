@@ -11,5 +11,5 @@ This project is an interactive web application that allows users to visually per
 - Frontend: ReactJS
 - Backend: Golang
 
-![screenshot1](screenshot(62).png)
-![screenshot](screenshot(66).png)
+![screenshot1](Screenshot(62).png)
+![screenshot2](Screenshot(66).png)
