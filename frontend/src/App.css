@@ -21,7 +21,7 @@
 }
 
 .path {
-  background-color: blue;  /* Highlight the DFS path */
+  background-color: blue;  
 }
 .obstacle {
   background-color: black;  /* Color for obstacles */
