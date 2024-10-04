@@ -11,5 +11,5 @@ This project is an interactive web application that allows users to visually per
 - Frontend: ReactJS
 - Backend: Golang
 
-![screenshot1](Screenshot(62).png)
+![screenshot1](https://github.com/Anishguptaprog/Assignment-Streak/blob/main/Screenshot%20(62).png)
 ![screenshot2](Screenshot(66).png)
