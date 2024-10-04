@@ -10,3 +10,6 @@ This project is an interactive web application that allows users to visually per
 ## Technologies Used
 - Frontend: ReactJS
 - Backend: Golang
+
+![screenshot1](screenshot(62).png)
+![screenshot](screenshot(66).png)
