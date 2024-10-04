@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gin-contrib/cors"
@@ -14,8 +15,9 @@ type Point struct {
 }
 
 type PathRequest struct {
-	Start Point `json:"start"`
-	End   Point `json:"end"`
+	Start Point      `json:"start"`
+	End   Point      `json:"end"`
+	Grid  [][]string `json:"grid"` // Ensure you're expecting a 2D string array for the grid
 }
 
 func main() {
@@ -46,14 +48,11 @@ func main() {
 			return
 		}
 
-		grid := make([][]string, 20)
-		for i := range grid {
-			grid[i] = make([]string, 20)
-		}
-		path := findDFSPath(req.Start, req.End, grid) // Pass the grid to the DFS function
+		log.Printf("Received grid: %v", req.Grid) // Log the grid to ensure it's correct
+
+		path := findDFSPath(req.Start, req.End, req.Grid) // Pass the grid to the DFS function
 		c.JSON(http.StatusOK, gin.H{"path": path})
 	})
-
 	router.Run(":8080")
 }
 
@@ -99,12 +98,14 @@ func main() {
 //		return path
 //	}
 func findDFSPath(start, end Point, grid [][]string) []Point {
+	// log.Printf("Received grid: %v", req.Grid)
 	path := []Point{}
 	visited := make(map[Point]bool)
 
 	var dfs func(Point) bool
 	dfs = func(p Point) bool {
-		if p.X < 0 || p.Y < 0 || p.X >= 20 || p.Y >= 20 || visited[p] || grid[p.X][p.Y] == "obstacle" {
+		// Check if out of bounds, visited, or if the cell is an obstacle
+		if p.X < 0 || p.Y < 0 || p.X >= len(grid) || p.Y >= len(grid[0]) || visited[p] || grid[p.X][p.Y] == "obstacle" {
 			return false
 		}
 
@@ -115,6 +116,7 @@ func findDFSPath(start, end Point, grid [][]string) []Point {
 			return true
 		}
 
+		// Define possible directions to move in (right, down, left, up)
 		directions := []Point{
 			{0, 1}, {1, 0}, {0, -1}, {-1, 0},
 		}
@@ -126,7 +128,7 @@ func findDFSPath(start, end Point, grid [][]string) []Point {
 			}
 		}
 
-		path = path[:len(path)-1]
+		path = path[:len(path)-1] // Backtrack if no valid path
 		return false
 	}
 

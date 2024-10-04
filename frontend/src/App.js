@@ -32,18 +32,15 @@ const toggleAddObstacle = () => {
 
 
 const handleClick = (row, col) => {
-  console.log(`Cell clicked: Row ${row}, Col ${col}`);
-
   if (addingObstacle) {
-    // Add obstacle if in obstacle-adding mode
+    // Add obstacle
     setGrid((prevGrid) => {
       const newGrid = prevGrid.map((r) => r.slice());
-      newGrid[row][col] = newGrid[row][col] === "obstacle" ? null : "obstacle"; // Toggle obstacle
+      newGrid[row][col] = newGrid[row][col] === "obstacle" ? null : "obstacle";  // Toggle obstacle
       return newGrid;
     });
   } else if (!start) {
     // Set start point
-    console.log("Setting start point");
     setStart([row, col]);
     setGrid((prevGrid) => {
       const newGrid = prevGrid.map((r) => r.slice());
@@ -51,26 +48,17 @@ const handleClick = (row, col) => {
       return newGrid;
     });
   } else if (!end) {
-    // Set end point
-    console.log("Setting end point");
+    // Set end point and calculate path
     setEnd([row, col]);
     setGrid((prevGrid) => {
       const newGrid = prevGrid.map((r) => r.slice());
       newGrid[row][col] = "end";  // Mark end point
       return newGrid;
     });
-    findPath([row, col]);  // Call the backend to find the path
+    findPath([row, col]);  // Call the backend to calculate the path
   }
- else {
-      // Toggle obstacle placement
-      setGrid((prevGrid) => {
-        const newGrid = prevGrid.map((r) => r.slice());
-        newGrid[row][col] = newGrid[row][col] === "obstacle" ? null : "obstacle";  // Toggle obstacle
-        return newGrid;
-      });
-    }
-  };
-  
+};
+
   const resetGrid = () => {
     setGrid(Array.from({ length: 20 }, () => Array(20).fill(null))); // Reset the grid
     setStart(null);  // Clear start point
@@ -78,7 +66,7 @@ const handleClick = (row, col) => {
     setAddingObstacle(false);  // Reset obstacle mode
   };
   
-  // In your return statement, update the button
+
   
   
   // Function to highlight the DFS path
@@ -118,6 +106,8 @@ const handleClick = (row, col) => {
     };
   
     console.log("Sending request data:", requestData);
+    console.log("Sending grid with obstacles:", requestData.grid);
+
   
     try {
       const response = await axios.post("http://localhost:8080/find-path", requestData, {
@@ -136,7 +126,6 @@ const handleClick = (row, col) => {
       console.error("Error fetching path:", error);
     }
   };
-  
   // const findPath = async (endPoint) => {
   //   const requestData = {
   //     start: { x: start[0], y: start[1] },
